@@ -61,12 +61,12 @@ public class ConsolePrinterUtility extends ColorsUtility {
         System.out.println(ColorsUtility.RESET);
     }
 
-    private static void menu() {
+    public static void menu() {
         //TODO: fill out the rest
         System.out.println(ColorsUtility.RESET);
         System.out.println("1. Create New Account");
         System.out.println("2. Login");
-        System.out.println("3. Exit");
+        System.out.println("3. Exit\n");
 
         choice();
     }
