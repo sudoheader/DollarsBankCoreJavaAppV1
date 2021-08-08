@@ -7,13 +7,15 @@ public class Account {
     private double fundsTransfer;
     private String viewLastFiveTransactions;
     private String displayInfo;
+    private Account account;
 
-    public Account(double depositAmount, double withdrawAmount, double fundsTransfer, String viewLastFiveTransactions, String displayInfo) {
+    public Account(double depositAmount, double withdrawAmount, double fundsTransfer, String viewLastFiveTransactions, String displayInfo, Account account) {
         this.depositAmount = depositAmount;
         this.withdrawAmount = withdrawAmount;
         this.fundsTransfer = fundsTransfer;
         this.viewLastFiveTransactions = viewLastFiveTransactions;
         this.displayInfo = displayInfo;
+        this.account = account;
     }
 
     public double getDepositAmount() {
@@ -56,6 +58,14 @@ public class Account {
         this.displayInfo = displayInfo;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -64,6 +74,7 @@ public class Account {
                 ", fundsTransfer=" + fundsTransfer +
                 ", viewLastFiveTransactions='" + viewLastFiveTransactions + '\'' +
                 ", displayInfo='" + displayInfo + '\'' +
+                ", account=" + account +
                 '}';
     }
 }

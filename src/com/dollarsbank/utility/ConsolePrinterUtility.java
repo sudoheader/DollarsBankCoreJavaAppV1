@@ -73,11 +73,12 @@ public class ConsolePrinterUtility extends ColorsUtility {
 
     private static void printMessage(String msg) {
         System.out.print(ColorsUtility.BLUE + "+");
-        for(int i = 0; i < msg.length() + 2; i++) {
+        int msgFormat = msg.length() + 2;
+        for(int i = 0; i < msgFormat; i++) {
             System.out.print("-");
         }
         System.out.print("+\n| " + msg + " |\n+");
-        for(int i = 0; i < msg.length() + 2; i++) {
+        for(int i = 0; i < msgFormat; i++) {
             System.out.print("-");
         }
         System.out.println("+");
