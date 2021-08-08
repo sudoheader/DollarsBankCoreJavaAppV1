@@ -1,18 +1,17 @@
 package com.dollarsbank.utility;
 
-public class ConsolePrinterUtility extends ColorsUtility {
+public class ConsolePrinterUtility implements ColorsUtility {
+
+    static String welcome = "DOLLARSBANK Welcomes You!";
+    static String enterDetails = "Enter Details For New Account";
+    static String enterLogin = "Enter Login Details";
+    static String welcomeCustomer = "WELCOME Customer!!!";
+    static String recentTransactions = "5 Recent Transactions:";
 
     public static void printToConsole() {
 
 //        System.out.println(ColorsUtility.BLUE + "BLUE COLOR");
-        String welcome = "DOLLARSBANK Welcomes You!";
-        String enterDetails = "Enter Details For New Account";
-        String enterLogin = "Enter Login Details";
-        String welcomeCustomer = "WELCOME Customer!!!";
-        String recentTransactions = "5 Recent Transactions:";
 
-        printMessage(welcome);
-        printMessage(enterDetails);
         printMessage(enterLogin);
         printMessage(welcomeCustomer);
         printMessage(recentTransactions);
@@ -27,13 +26,15 @@ public class ConsolePrinterUtility extends ColorsUtility {
     }
 
     //FIXME: probably need to be public
-    private static void userInput() {
-        //TODO: fill out the rest
+    public static void userInput() {
         System.out.println(ColorsUtility.CYAN);
     }
 
-    private static void choice() {
-        //TODO: fill out the rest
+    public static void choice() {
+        System.out.println(ColorsUtility.RESET);
+        System.out.println("1. Create New Account");
+        System.out.println("2. Login");
+        System.out.println("3. Exit\n");
         System.out.println(ColorsUtility.GREEN);
         System.out.println("Enter Choice (1,2, or 3) :");
         System.out.println(ColorsUtility.RESET);
@@ -57,16 +58,19 @@ public class ConsolePrinterUtility extends ColorsUtility {
     }
 
     private static void registration() {
-        //TODO: fill out the rest
         System.out.println(ColorsUtility.RESET);
+        printMessage(enterDetails);
+        System.out.println("Customer Name:");
+        System.out.println("Customer address:");
+        System.out.println("Customer Contact Number:");
+        System.out.println("User Id :");
+        System.out.println("Password : 8 Characters With Lower,Upper & Special");
+        System.out.println("Initial Deposit Amount");
     }
 
     public static void menu() {
-        //TODO: fill out the rest
+        printMessage(welcome);
         System.out.println(ColorsUtility.RESET);
-        System.out.println("1. Create New Account");
-        System.out.println("2. Login");
-        System.out.println("3. Exit\n");
 
         choice();
     }
