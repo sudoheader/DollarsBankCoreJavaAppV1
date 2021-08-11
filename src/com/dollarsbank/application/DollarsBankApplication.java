@@ -19,6 +19,7 @@ public class DollarsBankApplication {
         //TODO: based on userinput
         switch (choice) {
             case 1:
+                // write (or append) to .dat
                 ConsolePrinterUtility.registration();
 //                try(String input = scanner.nextLine();) {
 //
@@ -27,6 +28,7 @@ public class DollarsBankApplication {
 //                }
                 break;
             case 2:
+                // read to .dat
                 ConsolePrinterUtility.credentials();
                 break;
             case 3:
