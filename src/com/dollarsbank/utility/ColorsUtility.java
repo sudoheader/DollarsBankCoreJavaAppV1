@@ -1,6 +1,6 @@
 package com.dollarsbank.utility;
 
-public interface ColorsUtility {
+public class ColorsUtility {
     // source: https://stackoverflow.com/a/45444716
 
     // Reset

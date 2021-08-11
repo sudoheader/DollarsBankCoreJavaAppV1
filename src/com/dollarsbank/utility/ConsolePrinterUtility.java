@@ -1,6 +1,8 @@
 package com.dollarsbank.utility;
 
-public class ConsolePrinterUtility implements ColorsUtility {
+public class ConsolePrinterUtility {
+
+    ColorsUtility color = new ColorsUtility();
 
     static String welcome = "DOLLARSBANK Welcomes You!";
     static String enterDetails = "Enter Details For New Account";
@@ -24,28 +26,28 @@ public class ConsolePrinterUtility implements ColorsUtility {
     }
 
     //FIXME: probably need to be public
-    public static void userInput() {
-        System.out.println(ColorsUtility.CYAN);
+    public void userInput() {
+        System.out.println(color.CYAN);
     }
 
-    public static void userChoice() {
-        System.out.print(ColorsUtility.RESET);
+    public void userChoice() {
+        System.out.print(color.RESET);
     }
 
-    public static void choice() {
+    public void choice() {
         System.out.println("1. Create New Account");
         System.out.println("2. Login");
         System.out.println("3. Exit");
-        System.out.println(ColorsUtility.GREEN);
+        System.out.println(color.GREEN);
         System.out.println("Enter Choice (1,2, or 3) :");
         userChoice();
     }
 
-    public static void transactions() {
+    public void transactions() {
         printMessage(recentTransactions);
     }
 
-    public static void loggedIn() {
+    public void loggedIn() {
         printMessage(welcomeCustomer);
         System.out.println("1. Deposit Amount");
         System.out.println("2. Withdraw Amount");
@@ -53,20 +55,20 @@ public class ConsolePrinterUtility implements ColorsUtility {
         System.out.println("4. View 5 Recent Transactions");
         System.out.println("5. Display Customer Information");
         System.out.println("6. Sign out\n");
-        System.out.println(ColorsUtility.GREEN);
+        System.out.println(color.GREEN);
         System.out.println("Enter Choice (1,2,3,4,5 or 6) :");
-        System.out.println(ColorsUtility.RESET);
+        System.out.println(color.RESET);
     }
 
-    public static void credentials() {
+    public void credentials() {
         printMessage(enterLogin);
         System.out.println("User Id :");
         System.out.println("Password :");
         // when error, make it red
-        System.out.println(ColorsUtility.RED + "Invalid Credentials. Try Again!");
+        System.out.println(color.RED + "Invalid Credentials. Try Again!");
     }
 
-    public static void registration() {
+    public void registration() {
         System.out.println();
         printMessage(enterDetails);
         System.out.println("Customer Name:");
@@ -77,13 +79,13 @@ public class ConsolePrinterUtility implements ColorsUtility {
         System.out.println("Initial Deposit Amount");
     }
 
-    public static void menu() {
+    public void menu() {
         printMessage(welcome);
         choice();
     }
 
-    private static void printMessage(String msg) {
-        System.out.print(ColorsUtility.BLUE + "+");
+    private void printMessage(String msg) {
+        System.out.print(color.BLUE + "+");
         int msgFormat = msg.length() + 2;
         for(int i = 0; i < msgFormat; i++) {
             System.out.print("-");
@@ -93,6 +95,6 @@ public class ConsolePrinterUtility implements ColorsUtility {
             System.out.print("-");
         }
         System.out.println("+");
-        System.out.print(ColorsUtility.RESET);
+        System.out.print(color.RESET);
     }
 }
