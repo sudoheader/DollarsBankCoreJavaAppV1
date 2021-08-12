@@ -20,7 +20,7 @@ public class ConsolePrinterUtility {
 //        choice(); // will need a second one after login
 //        userInput();
 //    }
-    public static void exit() {
+    public void exit() {
         System.out.println("Goodbye!");
         System.exit(0);
     }
@@ -39,7 +39,7 @@ public class ConsolePrinterUtility {
         System.out.println("2. Login");
         System.out.println("3. Exit");
         System.out.println(color.GREEN);
-        System.out.println("Enter Choice (1,2, or 3) :");
+        System.out.println("Enter Choice (1,2, or 3) :" + color.WHITE + "");
         userChoice();
     }
 

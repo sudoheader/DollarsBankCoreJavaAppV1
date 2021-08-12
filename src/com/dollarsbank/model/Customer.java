@@ -17,6 +17,10 @@ public class Customer {
         this.account = account;
     }
 
+    public Customer() {
+        this("N/A", "N/A", "N/A", "N/A", "N/A", 0.0);
+    }
+
     public String getName() {
         return name;
     }
