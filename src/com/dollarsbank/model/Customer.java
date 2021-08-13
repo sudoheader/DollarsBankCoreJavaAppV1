@@ -1,83 +1,64 @@
 package com.dollarsbank.model;
 
-public class Customer {
-    private String name;
-    private String address;
-    private String contact;
-    private String userId;
-    private String password;
-    private Account account;
+import com.dollarsbank.dao.CustomerDaoImpl;
 
-    public Customer(String name, String address, String contact, String userId, String password, Account account) {
-        this.name = name;
-        this.address = address;
-        this.contact = contact;
-        this.userId = userId;
-        this.password = password;
-        this.account = account;
-    }
+import java.time.LocalDateTime;
 
-    public Customer() {
-        this("N/A", "N/A", "N/A", "N/A", "N/A", 0.0);
-    }
+public class Customer extends SavingsAccount {
 
-    public String getName() {
-        return name;
-    }
+	private String customer;
+	private String address;
+	private String contact;
+	CustomerDaoImpl cdi = new CustomerDaoImpl();
+	LocalDateTime ldt = LocalDateTime.now();
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Customer(String customer, String address, String contact, String userId, String password, double amount) {
+		super();
+		this.customer = customer;
+		this.address = address;
+		this.contact = contact;
 
-    public String getAddress() {
-        return address;
-    }
+		setUserId(userId);
+		setPassword(password);
+		setBalance(amount);
+		ldt = LocalDateTime.now();
+		if(cdi.getHistory(getUserId()).size() == 0) {
+			addToHistory("Initial Deposit Amount in account ["+userId+"]\n"
+					+ "Balance - " + amount + " as of "  +ldt.getDayOfWeek()+" "
+					+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
+					+" " +" "+ldt.getYear());
+		}
+	}
+	public Customer() {
+		super(); 
+	}
+	
+	public String toString() {
+		return "Customer [name=" + customer + ", address=" + address + ", contact=" + contact
+				+ "]"+ "{Account info [[ UserId= " + getUserId() + " " + "UserPass= " + getPassword()+ "]]  }";
+	}
+	
+	public String getCustomer() {
+		return customer;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setCustomer(String customer) {
+		this.customer = customer;
+	}
 
-    public String getContact() {
-        return contact;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public String getContact() {
+		return contact;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", contact='" + contact + '\'' +
-                ", userId='" + userId + '\'' +
-                ", password='" + password + '\'' +
-                ", account=" + account +
-                '}';
-    }
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 }

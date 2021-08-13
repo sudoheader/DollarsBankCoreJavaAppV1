@@ -4,12 +4,12 @@ import com.dollarsbank.controller.DollarsBankController;
 
 public class DollarsBankApplication {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        boolean testCase = true;
-        DollarsBankController dbc = new DollarsBankController();
-        do {
-            testCase = dbc.run();
-        } while(testCase);
-    }
+		DollarsBankController dollarsBankController = new DollarsBankController();
+		boolean run = true;
+		while(run) {
+			run = dollarsBankController.run();
+		}
+	}
 }

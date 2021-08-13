@@ -2,13 +2,15 @@ package com.dollarsbank.dao;
 
 import com.dollarsbank.model.Customer;
 
+import java.util.List;
+
 public interface CustomerDao {
 
-    public Customer getName(String name);
-    public Customer getAddress(String address);
-    public Customer getContact(String contact);
-    public Customer getUserId(String userId);
-    public Customer getPassword(String password);
-    public Customer getInitialAmount(double initialAmount);
-
+	int updateBalance(String userId, double balance) ;
+	int delete(int id);
+	int save(Customer e);
+	void saveHistory(String userId, String historyMessage);
+	Customer getCustomerById(int id);
+	List<String> getHistory(String userId);
+	List<Customer> getAllAccounts();
 }

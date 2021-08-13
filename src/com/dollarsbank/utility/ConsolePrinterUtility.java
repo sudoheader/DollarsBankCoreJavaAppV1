@@ -9,23 +9,14 @@ public class ConsolePrinterUtility {
     static String enterLogin = "Enter Login Details";
     static String welcomeCustomer = "WELCOME Customer!!!";
     static String recentTransactions = "5 Recent Transactions:";
+    static String invalidCreds = "Invalid Credentials. Try Again!";
+    static String notAnOption = "That's not an option. Try Again!";
 
-//    public static void printToConsole() {
-//
-//        menu();
-//        registration();
-//        credentials();
-//        loggedIn();
-//        transactions();
-//        choice(); // will need a second one after login
-//        userInput();
-//    }
     public void exit() {
         System.out.println("Goodbye!");
         System.exit(0);
     }
 
-    //FIXME: probably need to be public
     public void userInput() {
         System.out.println(color.CYAN);
     }
@@ -64,8 +55,15 @@ public class ConsolePrinterUtility {
         printMessage(enterLogin);
         System.out.println("User Id :");
         System.out.println("Password :");
+    }
+
+    public void invalidCreds() {
         // when error, make it red
-        System.out.println(color.RED + "Invalid Credentials. Try Again!");
+        System.out.println(color.RED + invalidCreds);
+    }
+
+    public void notAnOption() {
+        System.out.println(color.RED + notAnOption);
     }
 
     public void registration() {
