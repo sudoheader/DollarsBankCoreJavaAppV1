@@ -64,7 +64,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			}
 			
 			PreparedStatement pstmt =
-					conn.prepareStatement("insert into account(name, address, number, user_id, password, balance) values(?,?,?,?,?,?)");
+					conn.prepareStatement("insert into account(name, address, contact, user_id, password, balance) values(?,?,?,?,?,?)");
 			pstmt.setString(1, cust.getCustomer());
 			pstmt.setString(2, cust.getAddress());
 			pstmt.setString(3, cust.getContact());

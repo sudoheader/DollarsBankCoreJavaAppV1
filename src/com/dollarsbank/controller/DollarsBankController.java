@@ -11,15 +11,15 @@ import java.util.Scanner;
 
 public class DollarsBankController {
 
-	CustomerDaoImpl cDaoImp = new CustomerDaoImpl();
+	CustomerDaoImpl cdi = new CustomerDaoImpl();
 
 	static {
 		try {
-			CustomerDaoImpl cDaoImp = new CustomerDaoImpl();
-			cDaoImp.save(
+			CustomerDaoImpl cdi = new CustomerDaoImpl();
+			cdi.save(
 					new Customer("Bob", "1000 Brand Blvd", "100-123-4567",
 					"bob", "bobpassword" , 4000));
-			cDaoImp.save(
+			cdi.save(
 					new Customer("John", "9000 Cloverfield lane", "100-123-0987",
 					"john", "johnpassword", 1000));
 		} catch (Exception e) {
@@ -101,7 +101,7 @@ public class DollarsBankController {
 
 				initalDeposit = scan.nextDouble();
 				scan.nextLine();
-				cDaoImp.save(new Customer(name, address, contactNumber, userId, password, initalDeposit));
+				cdi.save(new Customer(name, address, contactNumber, userId, password, initalDeposit));
 			}
 
 			else {
@@ -113,7 +113,7 @@ public class DollarsBankController {
 	}
 
 	public void login() {
-		List<Customer> list = cDaoImp.getAllAccounts();
+		List<Customer> list = cdi.getAllAccounts();
 		String userId = "";
 		String password = "";
 		boolean logout=false;
@@ -150,11 +150,12 @@ public class DollarsBankController {
 
 	public void loginSuccess(String userId, int iterator) {
 
-		List<Customer> list = cDaoImp.getAllAccounts();
+		List<Customer> list = cdi.getAllAccounts();
 		boolean signOut = false;
 		double amount = 0;
 		int loginOption = 0;
-		list.get(iterator).toString(); 
+		list.get(iterator).toString();
+
 		while(!signOut) {
 			
 			cpu.loggedIn();
@@ -170,7 +171,7 @@ public class DollarsBankController {
 							scan.nextLine();
 							if(amount >= 0) {
 								list.get(iterator).deposit(amount);
-								cDaoImp.updateBalance(userId, list.get(iterator).getBalance());
+								cdi.updateBalance(userId, list.get(iterator).getBalance());
 								System.out.println("Deposit successful, your current balance is: " + list.get(iterator).getBalance());
 							}
 							else {
@@ -184,13 +185,13 @@ public class DollarsBankController {
 							scan.nextLine();
 							if(amount >= 0 && amount <= list.get(iterator).getBalance()) {
 								list.get(iterator).withdraw(amount);
-								cDaoImp.updateBalance(userId, list.get(iterator).getBalance());
+								cdi.updateBalance(userId, list.get(iterator).getBalance());
 								System.out.println("Withdraw successful, your current balance is: " + list.get(iterator).getBalance());
 								
 							}
 							else {
 								System.out.println("Invalid input, please insert 0-> (Funds you have)\n"
-										+ "your total funds =["+list.get(iterator).getBalance());
+										+ "your total funds =[" l +list.get(iterator).getBalance());
 							}
 						break;
 					case 3:
@@ -217,14 +218,14 @@ public class DollarsBankController {
 							scan.nextLine();
 							if(amount >= 0 && amount <= list.get(iterator).getBalance()) {
 								list.get(listPos).deposit(list.get(iterator).transfer(amount,list.get(listPos).getUserId()));
-								cDaoImp.updateBalance(list.get(iterator).getUserId(), list.get(iterator).getBalance());
-								cDaoImp.updateBalance(list.get(listPos).getUserId(), list.get(listPos).getBalance());
+								cdi.updateBalance(list.get(iterator).getUserId(), list.get(iterator).getBalance());
+								cdi.updateBalance(list.get(listPos).getUserId(), list.get(listPos).getBalance());
 								System.out.println("Transfer successful, your current balance is: " + list.get(iterator).getBalance());
 								
 							}
 							else {
 								System.out.println("Invalid input, please insert 0-> (Funds you have)\n"
-										+ "your total funds =["+list.get(iterator).getBalance());
+										+ "your total funds =[" + list.get(iterator).getBalance());
 							}
 						break;
 					case 4:
@@ -239,7 +240,7 @@ public class DollarsBankController {
 						dgsu.generateStub(list.get(iterator));
 						break;
 					case 7:
-						signOut=true;
+						signOut = true;
 						break;
 					default:
 						break;

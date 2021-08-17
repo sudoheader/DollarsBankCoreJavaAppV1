@@ -12,7 +12,7 @@ public class SavingsAccount extends Account {
 	private double balance;
 	private String userId;
 	private String password;
-	CustomerDaoImpl custDaoImpl = new CustomerDaoImpl();
+	CustomerDaoImpl cdi = new CustomerDaoImpl();
 
 	private List<String> transactionHistory = new ArrayList<String>();
 	
@@ -33,16 +33,16 @@ public class SavingsAccount extends Account {
 	public void deposit(double amount) {
 		ldt = LocalDateTime.now();
 
-		if(custDaoImpl.getHistory(getUserId()).size() == 0) {
+		if(cdi.getHistory(getUserId()).size() == 0) {
 			balance += amount;
 		}
 
 		else {
 			balance += amount;
 			addToHistory("Deposited " + amount + " into account ["+userId+"]\n"
-				+ "Balance - " + balance + " as of " +ldt.getDayOfWeek()+" "
-				+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
-				+" " +" "+ldt.getYear());
+				+ "Balance - " + balance + " as of " + ldt.getDayOfWeek()+" " + ldt.getMonth() + " "
+				+ ldt.getDayOfMonth() + " "+ ldt.getHour() + ":" + ldt.getMinute() + ":" + ldt.getSecond() + " " + " "
+				+ ldt.getYear());
 		}
 	}
 
@@ -51,9 +51,9 @@ public class SavingsAccount extends Account {
 		ldt = LocalDateTime.now();
 		balance -= amount;
 		addToHistory("Withdrawn " + amount + " out of account ["+userId+"]\n"
-				+ "Balance - " + balance + " as of " +ldt.getDayOfWeek()+" "
-				+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
-				+" " +" "+ldt.getYear());
+				+ "Balance - " + balance + " as of " + ldt.getDayOfWeek() + " " + ldt.getMonth() + " "
+				+ ldt.getDayOfMonth() + " " + ldt.getHour() + ":" + ldt.getMinute() + ":" + ldt.getSecond() + " "
+				+ " " + ldt.getYear());
 		
 	}
 
@@ -62,9 +62,8 @@ public class SavingsAccount extends Account {
 		ldt = LocalDateTime.now();
 		balance -= amount;
 		addToHistory("Transfered " + amount + " into account ["+receiverId+"]\n"
-				+ "as of " +ldt.getDayOfWeek()+" "
-				+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
-				+" " +" "+ldt.getYear());
+				+ "as of " + ldt.getDayOfWeek() + " " + ldt.getMonth() + " " + ldt.getDayOfMonth() + " "
+				+ ldt.getHour() + ":" + ldt.getMinute() + ":" + ldt.getSecond() + " " + " " + ldt.getYear());
 		return amount;
 	}
 	public double getBalance()
@@ -101,7 +100,7 @@ public class SavingsAccount extends Account {
 	@Override
 	public List<String> getHistory() {
 
-		List<String> list = custDaoImpl.getHistory(userId);
+		List<String> list = cdi.getHistory(userId);
 		List<String> transactionHistory = new ArrayList<String>();
 		
 		int count = list.size();
@@ -123,7 +122,7 @@ public class SavingsAccount extends Account {
 	@Override
 	public void printHistory() {
 
-		List<String> list = custDaoImpl.getHistory(userId);
+		List<String> list = cdi.getHistory(userId);
 		List<String> transactionHistory = new ArrayList<String>();
 
 		int count = list.size();
@@ -144,11 +143,11 @@ public class SavingsAccount extends Account {
 	public void addToHistory(String historyMessage) {
 
 		if(transactionHistory.size() == 5) {
-			custDaoImpl.saveHistory(userId,historyMessage);
+			cdi.saveHistory(userId,historyMessage);
 		}
 
 		else {
-			custDaoImpl.saveHistory(userId,historyMessage);
+			cdi.saveHistory(userId,historyMessage);
 		}
 	}
 }
