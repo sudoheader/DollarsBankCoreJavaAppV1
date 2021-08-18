@@ -36,7 +36,7 @@ public class ConsolePrinterUtility {
         System.out.println("2. Login");
         System.out.println("3. Exit");
         System.out.println(color.GREEN);
-        System.out.println("Enter Choice (1,2, or 3) :" + color.WHITE + "");
+        System.out.print("Enter Choice (1,2, or 3) :\n" + color.WHITE + "");
         userChoice();
     }
 
@@ -54,7 +54,7 @@ public class ConsolePrinterUtility {
         System.out.println("ADDRESS: " + c.getAddress());
         System.out.println("CONTACT: " + c.getContact() + color.RESET);
         System.out.println(color.GREEN);
-        System.out.println("Enter Choice (1,2,3,4,5 or 6) :");
+        System.out.print("Enter Choice (1,2,3,4,5 or 6) : \n");
         System.out.println(color.RESET);
     }
 
@@ -67,7 +67,7 @@ public class ConsolePrinterUtility {
         System.out.println("5. Display Customer Information");
         System.out.println("6. Sign out\n");
         System.out.println(color.GREEN);
-        System.out.println("Enter Choice (1,2,3,4,5 or 6) :");
+        System.out.print("Enter Choice (1,2,3,4,5 or 6) :\n");
         System.out.println(color.RESET);
     }
 

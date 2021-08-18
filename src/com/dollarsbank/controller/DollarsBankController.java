@@ -234,11 +234,8 @@ public class DollarsBankController {
 						break;
 					case 5:
 						cpu.displayInfo();
-						list.get(iterator).getUserId();
-						break;
-//					case 6:
 //						dgsu.generateStub(list.get(iterator));
-//						break;
+						break;
 					case 6:
 						signOut = true;
 						break;
