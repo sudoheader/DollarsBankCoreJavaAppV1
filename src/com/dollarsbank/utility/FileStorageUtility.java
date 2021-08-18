@@ -11,7 +11,7 @@ public class FileStorageUtility {
 		++fileCount;
 
 		try {
-			String fileName = "BankStub-"+ userId + "-" + fileCount +".txt" ;
+			String fileName = "BankStub-" + userId + "-" + fileCount + ".txt" ;
 			File myObj = new File(fileName);
 			if (myObj.createNewFile()) {
 				if(!writeFile(fileName,text))

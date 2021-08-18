@@ -20,7 +20,7 @@ public class DataGeneratorStubUtil {
 
 		String message = transactionHistory(c.getHistory());
 		
-		fsu.saveFile(c.getUserId(),top+message);
+		fsu.saveFile(c.getUserId(),top + message);
 		
 		return false;
 	}

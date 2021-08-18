@@ -145,7 +145,6 @@ public class DollarsBankController {
 			System.out.println();
 			login();
 		}
-		
 	}
 
 	public void loginSuccess(String userId, int iterator) {
@@ -165,7 +164,7 @@ public class DollarsBankController {
 
 				switch (loginOption) {
 					case 1:
-						System.out.println("How much would you like to deposit? :");
+						System.out.println("Enter deposit amount :");
 						
 							amount = scan.nextDouble();
 							scan.nextLine();
@@ -175,11 +174,11 @@ public class DollarsBankController {
 								System.out.println("Deposit successful, your current balance is: " + list.get(iterator).getBalance());
 							}
 							else {
-								System.out.println("Invalid input, please insert 0-> (Big Number)");
+								System.out.println("Invalid input, please insert amount greater than 0");
 							}
 						break;
 					case 2:
-						System.out.println("How much would you like to withdraw? :");
+						System.out.println("Enter withdrawal amount :");
 						
 							amount = scan.nextDouble();
 							scan.nextLine();
@@ -190,8 +189,8 @@ public class DollarsBankController {
 								
 							}
 							else {
-								System.out.println("Invalid input, please insert 0-> (Funds you have)\n"
-										+ "your total funds =[" l +list.get(iterator).getBalance());
+								System.out.println("Invalid input, please insert upto funds amount\n"
+										+ "your total funds =[" + list.get(iterator).getBalance());
 							}
 						break;
 					case 3:
@@ -199,7 +198,7 @@ public class DollarsBankController {
 						int listPos = 0;
 						boolean transferable = false;
 						String userId2 = "";
-						System.out.println("Who are you wanting to transfer with? User Id: ");
+						System.out.println("Enter user id to transfer to: ");
 						
 							userId2 = scan.nextLine().toLowerCase();
 							for (Customer customer : list) {
@@ -210,10 +209,10 @@ public class DollarsBankController {
 								transferCount++;
 							}
 							if(!transferable) {
-								System.out.println("User doesn't exist! ");
+								System.out.println("There is no user with that id");
 								break;
 							}
-							System.out.println("How much are you transfering to " + userId2);
+							System.out.println("Enter transfer amount to " + userId2);
 							amount = scan.nextDouble();
 							scan.nextLine();
 							if(amount >= 0 && amount <= list.get(iterator).getBalance()) {
@@ -224,7 +223,7 @@ public class DollarsBankController {
 								
 							}
 							else {
-								System.out.println("Invalid input, please insert 0-> (Funds you have)\n"
+								System.out.println("Invalid input, please insert upto funds amount\n"
 										+ "your total funds =[" + list.get(iterator).getBalance());
 							}
 						break;
@@ -234,12 +233,13 @@ public class DollarsBankController {
 						System.out.println();
 						break;
 					case 5:
-						cpu.transactions();
+						cpu.displayInfo();
+						list.get(iterator).getUserId();
 						break;
+//					case 6:
+//						dgsu.generateStub(list.get(iterator));
+//						break;
 					case 6:
-						dgsu.generateStub(list.get(iterator));
-						break;
-					case 7:
 						signOut = true;
 						break;
 					default:
@@ -250,6 +250,10 @@ public class DollarsBankController {
 				cpu.notAnOption();
 			}
 		}
+	}
+
+	public void transaction(int userId) {
+		cdi.getCustomerById(userId);
 	}
 
 	private boolean passCheck(String password) {
